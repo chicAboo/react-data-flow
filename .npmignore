@@ -1,0 +1,11 @@
+.DS_Store
+.cache
+.vscode
+.idea
+.dependabot
+node_modules
+examples
+cypress
+.env
+tsconfig.json
+src
