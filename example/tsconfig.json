@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./", // enables absolute path imports
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "outDir": "src/public/", // target for compiled files
+    "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
+    "esModuleInterop": true,
+    "allowJs": true, // include js files
+    // "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true, // importing helper functions from tslib
+    "noEmitHelpers": true, // disable emitting inline helper functions
+    "jsx": "react", // process JSX
+    "lib": ["dom", "es6"],
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "pretty": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*", "typings/*"],
+  "exclude": ["node_modules", "src/**/*.spec.*",
+    "src/public", "webapck"]
+}

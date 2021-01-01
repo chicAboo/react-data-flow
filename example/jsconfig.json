@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "checkJs": true,
+    "baseUrl": "./src",
+    "jsx": "react",
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "es2016"],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "exclude": ["node_modules", "static"]
+}

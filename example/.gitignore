@@ -1,0 +1,18 @@
+# 日志
+logs
+*.log
+
+# 依赖包
+node_modules
+
+# 打包文件
+# static
+
+# 编辑器生成的文件夹
+.idea
+.vscode
+
+# Mac
+.DS_Store
+
+yarn-error.log

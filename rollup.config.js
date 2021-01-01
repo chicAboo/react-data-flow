@@ -7,6 +7,7 @@ import replace from '@rollup/plugin-replace';
 import svgr from '@svgr/rollup';
 import typescript from 'rollup-plugin-typescript2';
 import alias from '@rollup/plugin-alias';
+import scss from 'rollup-plugin-scss';
 
 import pkg from './package.json';
 
@@ -43,6 +44,7 @@ export default [
           '@': 'src',
         }
       }),
+      scss(),
       replace({
         __ENV__: JSON.stringify(processEnv),
         __REACT_FLOW_VERSION__: JSON.stringify(pkg.version),
