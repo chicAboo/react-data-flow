@@ -35,9 +35,12 @@ const Demo = () => {
         height,
         border: '1px solid #ccc',
       }}>
-      <button onClick={() => console.log(dfInstance?.getDfValues())}>获取当前值</button>
-      <button onClick={() => dfInstance?.submit()}>提交</button>
-      <ReactDataFlow form={dfInstance} nodes={nodes} onFinish={(data: any) => console.log(data)}>
+      <button onClick={() => console.log(dfInstance.getDfValues())}>获取当前值</button>
+      <button onClick={() => dfInstance.submit()}>提交</button>
+      <ReactDataFlow
+        flow={dfInstance}
+        nodes={nodes}
+        onFinish={(data: any) => console.log('tst', data)}>
         <Backgrounds />
         <Controls />
       </ReactDataFlow>

@@ -27,7 +27,7 @@ const ReactDataFlow = ({
   maxZoom,
   children,
   onFinish,
-                         flow,
+  flow,
   ...rest
 }: ReactDataFlowProps) => {
   return (

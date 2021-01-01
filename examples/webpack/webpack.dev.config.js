@@ -38,7 +38,8 @@ const sassGlobalRegex = /\.global\.(scss|sass)$/;
 const srcPath = path.resolve('./', 'src');
 
 const pathAlias = {
-  '@': srcPath,
+  // '@': srcPath,
+  '@': path.resolve('./', 'src/a/'),
   'react-dom': '@hot-loader/react-dom',
 };
 
@@ -76,7 +77,7 @@ module.exports = {
   },
   mode: 'development',
   entry: {
-    main: ['react-hot-loader/patch', './src/index.tsx'],
+    main: ['./src/index.tsx'],
   },
   output: {
     pathinfo: true,

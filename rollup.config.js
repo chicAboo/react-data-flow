@@ -44,7 +44,7 @@ export default [
           '@': 'src',
         }
       }),
-      scss(),
+      // scss(),
       replace({
         __ENV__: JSON.stringify(processEnv),
         __REACT_FLOW_VERSION__: JSON.stringify(pkg.version),

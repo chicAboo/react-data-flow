@@ -5,6 +5,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import useControlsHelper from '../../hooks/useControlsHelper';
 import { useStoreState } from '@/store/hooks';
+import { FitMap, MiniMap, ZoomIn, ZoomOut } from '@/assets/Icon';
 import './index.scss';
 
 const Controls = () => {
@@ -70,18 +71,18 @@ const Controls = () => {
 
   return (
     <div className="rdf-tooltip">
-      <span className="iconfont" title="fitMap" onClick={onFitMap}>
-        &#xe62e;
+      <span title="fitMap" onClick={onFitMap}>
+        <FitMap />
       </span>
-      <span className="iconfont" title="miniMap">
-        &#xe62f;
+      <span title="miniMap">
+        <MiniMap />
       </span>
       <span className="rdf-tooltip-split" />
-      <span className="iconfont" title="放大" onClick={onZoomIn}>
-        &#xe630;
+      <span title="放大" onClick={onZoomIn}>
+        <ZoomIn />
       </span>
-      <span className="iconfont" title="缩小" onClick={onZoomOut}>
-        &#xe631;
+      <span title="缩小" onClick={onZoomOut}>
+        <ZoomOut />
       </span>
       <input
         className="rdf-tooltip-input"

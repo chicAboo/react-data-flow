@@ -5,5 +5,6 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Demo from './demo1';
+console.log(1);
 
 render(<Demo />, document.getElementById('root'));
