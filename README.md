@@ -17,7 +17,7 @@ yarn add rdf-renderer
 
 ## 截图
 
-![react-data-flow](./assets/images/react-data-flow.jpg)
+![react-data-flow](https://github.com/chicAboo/react-data-flow/blob/main/assets/images/react-data-flow.jpg)
 
 
 ## 实例

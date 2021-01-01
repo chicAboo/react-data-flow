@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/chicAboo/react-data-flow.git"
   },
   "scripts": {
     "build": "rollup -c --environment NODE_ENV:production",
