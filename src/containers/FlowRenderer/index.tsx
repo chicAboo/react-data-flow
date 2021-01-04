@@ -3,21 +3,30 @@
  * @date 2020/12/24 5:32 下午
  */
 import React, { FC, useEffect } from 'react';
+import { produce } from 'immer';
 import ZoomPane from '../ZoomPane';
 import NodeRenderer from '../NodeRenderer';
 import EdgeRenderer from '../EdgeRenderer';
 import MarkerDefinitions from '@/components/MarkerDefinitions';
-import { DataFlowTypes } from '@/typings';
-import { useStoreState } from '@/store/hooks';
+import { DataFlowTypes, EdgeTypes } from '@/typings';
+import { useStoreState, useStoreActions } from '@/store/hooks';
 import useDFSelector from '@/hooks/useDFSelector';
 
 interface FlowRendererProps {
   onFinish?: (data: DataFlowTypes) => void;
   flow?: any;
+  isShowCircle?: boolean;
+  onCircleCallback?: (data: EdgeTypes) => void;
 }
 
-const FlowRenderer: FC<FlowRendererProps> = ({ flow, onFinish }) => {
+const FlowRenderer: FC<FlowRendererProps> = ({
+  isShowCircle,
+  flow,
+  onFinish,
+  onCircleCallback,
+}) => {
   const { nodes, edges, transform } = useStoreState((state) => state);
+  const { setEdges } = useStoreActions((actions) => actions);
 
   const [dfInstance] = useDFSelector(flow);
 
@@ -30,6 +39,16 @@ const FlowRenderer: FC<FlowRendererProps> = ({ flow, onFinish }) => {
         if (onFinish) {
           onFinish(values);
         }
+      },
+      setEdgeCallback: (data: any) => {
+        const newEdges = produce(edges, (draft) => {
+          const edge = draft.find((item) => item.id === data.edgeId);
+          if (edge) {
+            edge.text = data.text;
+          }
+        });
+
+        setEdges(newEdges);
       },
     });
   }
@@ -46,7 +65,7 @@ const FlowRenderer: FC<FlowRendererProps> = ({ flow, onFinish }) => {
   return (
     <ZoomPane>
       <g className="tempLine">
-        <EdgeRenderer />
+        <EdgeRenderer isShowCircle={isShowCircle} onCircleCallback={onCircleCallback} />
         <NodeRenderer />
       </g>
       <MarkerDefinitions />

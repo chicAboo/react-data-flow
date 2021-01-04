@@ -2,7 +2,7 @@
  * @author ChicAboo
  * @date 2020/12/24 3:50 下午
  */
-import React, { FC, useEffect, useRef, useCallback, memo, HTMLAttributes } from 'react';
+import React, { FC, useEffect, useRef, useCallback, useMemo, memo, HTMLAttributes } from 'react';
 import { prefixCls } from '@/containers/DataFlow';
 import { config, canvasHeight, canvasWidth } from '@/constants/config';
 import { GridTypes } from '@/typings';
@@ -14,7 +14,16 @@ interface BackgroundProps extends HTMLAttributes<HTMLDivElement> {
 
 const Background: FC<BackgroundProps> = ({ gridConfig, style }) => {
   const girdRef = useRef<HTMLCanvasElement>(null);
-  const currentGridConfig = { ...config.grid, ...gridConfig };
+
+  /**
+   *  combine config
+   * */
+  const currentGridConfig = useMemo(() => {
+    if (gridConfig && Object.keys(gridConfig).length > 0) {
+      return { ...config.grid, ...gridConfig };
+    }
+    return config.grid;
+  }, [gridConfig]);
 
   /**
    *  draw grid lines

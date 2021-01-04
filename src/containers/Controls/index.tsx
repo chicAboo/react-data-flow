@@ -5,7 +5,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import useControlsHelper from '../../hooks/useControlsHelper';
 import { useStoreState } from '@/store/hooks';
-import { FitMap, MiniMap, ZoomIn, ZoomOut } from '@/assets/Icon';
+import { FitMap, ZoomIn, ZoomOut } from '@/assets/Icon';
 import './index.scss';
 
 const Controls = () => {
@@ -74,9 +74,9 @@ const Controls = () => {
       <span title="fitMap" onClick={onFitMap}>
         <FitMap />
       </span>
-      <span title="miniMap">
-        <MiniMap />
-      </span>
+      {/*<span title="miniMap">*/}
+      {/*  <MiniMap />*/}
+      {/*</span>*/}
       <span className="rdf-tooltip-split" />
       <span title="放大" onClick={onZoomIn}>
         <ZoomIn />

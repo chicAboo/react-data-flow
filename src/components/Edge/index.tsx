@@ -10,6 +10,8 @@ import Circle from './Circle';
 
 interface EdgeProps {
   edge: EdgeTypes;
+  isShowCircle?: boolean;
+  onCircleCallback?: (data: EdgeTypes) => void;
 }
 
 /**
@@ -34,7 +36,7 @@ function setPath(edge: EdgeTypes) {
   return { pathData, middleY, middleX };
 }
 
-const Edge: FC<EdgeProps> = ({ edge }) => {
+const Edge: FC<EdgeProps> = ({ edge, isShowCircle, onCircleCallback }) => {
   const { strokeWidth, strokeColor } = config.line;
   const { pathData, middleX, middleY } = setPath(edge);
 
@@ -47,7 +49,13 @@ const Edge: FC<EdgeProps> = ({ edge }) => {
         fill="none"
         markerEnd="url(#arrow)"
       />
-      <Circle edge={edge} position={{ x: middleX, y: middleY }} />
+      {isShowCircle && (
+        <Circle
+          edge={edge}
+          position={{ x: middleX, y: middleY }}
+          onCircleCallback={onCircleCallback}
+        />
+      )}
     </g>
   );
 };

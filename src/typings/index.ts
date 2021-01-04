@@ -84,15 +84,15 @@ export interface EdgeTypes {
   /**
    *  开始节点的方向
    * */
-  startDirection: '';
+  startDirection: string;
   /**
    *  结束节点的方向
    * */
-  endDirection: '';
+  endDirection: string;
   /**
    *  线上文本
    * */
-  text: string | number;
+  text?: string | number;
 }
 
 export interface ControlsHelperFunctions {

@@ -18,6 +18,8 @@ interface ReactDataFlowProps extends Omit<HTMLAttributes<HTMLDivElement>, ''> {
   maxZoom?: number;
   onFinish?: (data: DataFlowTypes) => void;
   flow?: any;
+  isShowCircle?: boolean;
+  onCircleCallback?: (data: EdgeTypes) => void;
 }
 
 const ReactDataFlow = ({
@@ -28,12 +30,19 @@ const ReactDataFlow = ({
   children,
   onFinish,
   flow,
+  isShowCircle = false,
+  onCircleCallback,
   ...rest
 }: ReactDataFlowProps) => {
   return (
     <div {...rest} className={prefixCls}>
       <Wrapper>
-        <FlowRenderer onFinish={onFinish} flow={flow} />
+        <FlowRenderer
+          onFinish={onFinish}
+          flow={flow}
+          isShowCircle={isShowCircle}
+          onCircleCallback={onCircleCallback}
+        />
         {children}
         <ElementUpdate nodes={nodes} edges={edges} />
       </Wrapper>

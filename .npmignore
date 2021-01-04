@@ -4,7 +4,7 @@
 .idea
 .dependabot
 node_modules
-example
+examples
 cypress
 .env
 tsconfig.json

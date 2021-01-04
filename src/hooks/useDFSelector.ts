@@ -7,6 +7,7 @@ import { DataFlowTypes } from '@/typings';
 
 export interface Callbacks<Values = any> {
   onFinish?: (values: Values) => void;
+  setEdgeCallback?: (values: Values) => void;
 }
 
 export interface InternalHooks {
@@ -17,6 +18,7 @@ interface DFInstance {
   submit: () => void;
   setCallbacks: (callbacks: Callbacks) => void;
   setFields: (values: DataFlowTypes) => void;
+  setEdgeValues: (data: any) => void;
   getDfValues: () => DataFlowTypes | null;
 }
 
@@ -34,6 +36,7 @@ class DFStore {
   public getDfFunctions = (): DFInstance => ({
     submit: this.submit,
     setFields: this.setFields,
+    setEdgeValues: this.setEdgeValues,
     setCallbacks: this.setCallbacks,
     getDfValues: this.getDfValues,
   });
@@ -63,14 +66,31 @@ class DFStore {
   };
 
   /**
-   *  set field
+   *  set field data
    * */
   private setFields = (values: any) => {
     this.fields = values;
   };
 
+  /**
+   *  get field data
+   * */
   private getDfValues = () => {
     return this.fields;
+  };
+
+  /**
+   *  设置边信息回显
+   * */
+  private setEdgeValues = (data: any) => {
+    const setEdgeCallback = this.callbacks.setEdgeCallback;
+    if (setEdgeCallback) {
+      try {
+        setEdgeCallback(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
   };
 }
 

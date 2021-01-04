@@ -68,7 +68,7 @@ export const config = {
     },
     cbStyle: {
       radius: 16,
-      fill: '#2994FF',
+      fill: '#FAFBFC',
       textFill: '#666',
       stroke: '#D2D5D8',
       fontSize: 14,

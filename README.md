@@ -17,58 +17,86 @@ yarn add rdf-renderer
 
 ## 截图
 
-![react-data-flow](https://github.com/chicAboo/react-data-flow/blob/main/assets/images/react-data-flow.jpg)
+![react-data-flow](./assets/images/react-data-flow.jpg)
 
 
 ## 实例
 ```javascript
 import React from 'react';
-import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from 'rdf-renderer';
 
+import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from '@/index';
+
+const width = document.body.clientWidth;
+const height = 600;
 const nodes = [
   {
     id: 'id_001',
     title: 'test',
-    position: { x: 300, y: 100 },
+    position: { x: 185, y: 231 },
   },
   {
     id: 'id_002',
     title: 'test1',
-    position: { x: 500, y: 200 },
+    position: { x: 500, y: 231 },
   },
   {
     id: 'id_003',
     title: 'test1',
-    position: { x: 700, y: 300 },
+    position: { x: 185, y: 492 },
   },
 ];
 
+const edges = [
+  {
+    endDirection: 'top',
+    endPosition: { x: 185, y: 492 },
+    id: 'id_001-id_003',
+    sourceId: 'id_001',
+    startDirection: 'bottom',
+    startPosition: { x: 185, y: 231 },
+    targetId: 'id_003',
+    text: 10,
+  },
+  {
+    endDirection: 'left',
+    endPosition: { x: 498, y: 231 },
+    id: 'id_001-id_002',
+    sourceId: 'id_001',
+    startDirection: 'right',
+    startPosition: { x: 185, y: 231 },
+    targetId: 'id_002',
+  },
+];
+
+// 背景参数
+/*const gridConfig = {
+  strokeColor: '#ccc', // 边的颜色
+  strokeWidth: 1, // 边的宽度
+  isLineDash: false, // 是否虚线显示
+};*/
 
 const Demo = () => {
-  // 实例化数据流
   const [dfInstance] = useDFSelector();
-
-  const getDfValues = () => {
-    // 上面nodes的值，如果图上拖拽生成边，则存在边的信息
-     console.log(dfInstance?.getDfValues())
-  }
-
-  const onFinish = (values) => {
-    // 和上面getDfValues取到的值相同
-    console.log(values);
-  }
 
   return (
     <div
       style={{
-        width: 800,
-        height: 500,
+        width,
+        height,
         border: '1px solid #ccc',
       }}>
-      <button onClick={getDfValues}>获取当前值</button>
+      <button onClick={() => console.log(dfInstance?.getDfValues())}>获取当前值</button>
+      <button onClick={() => dfInstance?.setEdgeValues({ edgeId: 'id_001-id_002', text: 99 })}>
+        设置边的值
+      </button>
       <button onClick={() => dfInstance?.submit()}>提交</button>
-
-      <ReactDataFlow flow={dfInstance} nodes={nodes} onFinish={onFinish}>
+      <ReactDataFlow
+        flow={dfInstance}
+        nodes={nodes}
+        edges={edges}
+        isShowCircle={true}
+        onCircleCallback={(data) => console.log(data)}
+        onFinish={(data: any) => console.log(data)}>
         <Backgrounds />
         <Controls />
       </ReactDataFlow>
@@ -77,16 +105,19 @@ const Demo = () => {
 };
 
 export default Demo;
+
 ```
 
 ## 文档
 
 名称 | 描述  |  类型  |  默认值  | 版本 |
 --- | --- | --- | --- | --- |
-nodes  |  节点信息(必填)  | Array<NodeTypes>  |  []  | 1.0.3
-edges  |  边的信息(可选)  | Array<edgeTypes>  |  []  | 1.0.3
-onFinish  |  完成后的回调，需要通过实例化，调用submit方法触发(可选)  | (data) => void |  -  | 1.0.3
-flow  |  传入rdf的实例，用于控制图上信息的设置和获取(可选)  | any |  -  | 1.0.3
+nodes  |  节点信息(必填)  | Array<NodeTypes>  |  []  | 1.0.5
+edges  |  边的信息(可选)  | Array<edgeTypes>  |  []  | 1.0.5
+flow  |  传入rdf的实例，用于控制图上信息的设置和获取(可选)  | any |  -  | 1.0.5
+isShowCircle  |  是否显示线上的圆(可选)  | boolean |  false  | 1.0.5
+onCircleCallback  |  线上圆的回调(可选)  | (edge) => void |  -  | 1.0.5
+onFinish  |  完成后的回调，需要通过实例化，调用submit方法触发(可选)  | (data) => void |  -  | 1.0.5
 
 
 ### 节点选项
@@ -114,8 +145,9 @@ flow  |  传入rdf的实例，用于控制图上信息的设置和获取(可选)
 ### dfInstance
 名称  |  描述  |  类型  |  默认值  | 版本
 | ---| --- | --- | --- | --- |
-getDfValues  |  获取节点和边的信息  | () => DataFlowTypes |  {}  | 1.0.2
-submit  |  提交信息，触发onFinish事件，返回数据  | () => void |  []  | 1.0.2
+getDfValues  |  获取节点和边的信息  | () => DataFlowTypes |  {}  | 1.0.5
+setEdgeValues  |  设置边上圆上的回显值  | (data: {edgeId: string, text: 99 }) => void |  {}  | 1.0.5
+submit  |  提交信息，触发onFinish事件，返回数据  | () => void |  []  | 1.0.5
 
 
 ## 背景
@@ -124,16 +156,31 @@ submit  |  提交信息，触发onFinish事件，返回数据  | () => void |  [
 ```javascript
 import {Backgrounds} from 'rdf-renderer';
 
-// ...
+const gridConfig = {
+  strokeColor: '#ccc', // 边的颜色
+  strokeWidth: 1, // 边的宽度
+  isLineDash: false, // 是否虚线显示
+};
 
 <ReactDataFlow flow={dfInstance} nodes={nodes} onFinish={onFinish}>
-  <Backgrounds />
+  <Backgrounds gridConfig={gridConfig} style={{ background: '#fff' }} />
 </ReactDataFlow>
 ```
-目前只有一种背景，后期会根据属性的传入自定义背景的颜色，样式；
+
+### 背景参数
+
+名称  |  描述  |  类型  |  默认值  | 版本
+| ---| --- | --- | --- | --- |
+gridConfig  |  背景参数配置(可选)  | object |  {}  | 1.0.5
+gridConfig.strokeColor  |  背景线条颜色  | string |  '#E2E2F0'  | 1.0.5
+gridConfig.strokeWidth  |  背景线条宽度  | number |  1  | 1.0.5
+gridConfig.distance  |  背景线条间距  | number |  20  | 1.0.5
+gridConfig.isLineDash  |  是否虚线显示  | boolean |  true  | 1.0.5
+gridConfig.lineDash  |  虚线的间距  | Array<[number, number]> |  [3, 3]  | 1.0.5
+style |  支持原生标签的style样式  | - |  -  | 1.0.5
 
 
-### 控件
+## 控件
 
 引入方式
 ```javascript

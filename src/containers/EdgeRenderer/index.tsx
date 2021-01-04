@@ -2,7 +2,7 @@
  * @author ChicAboo
  * @date 2020/12/24 5:56 下午
  */
-import React, { memo, useEffect, useCallback, useRef } from 'react';
+import React, { FC, memo, useEffect, useCallback, useRef } from 'react';
 import { produce } from 'immer';
 import { select, selectAll } from 'd3-selection';
 import { drag } from 'd3-drag';
@@ -13,8 +13,13 @@ import Edge from '@/components/Edge';
 import { EdgeTypes } from '@/typings';
 import { lineHover } from './util';
 
+interface EdgeRenderer {
+  isShowCircle?: boolean;
+  onCircleCallback?: (data: EdgeTypes) => void;
+}
+
 let tempId: any = null;
-const EdgeRenderer = () => {
+const EdgeRenderer: FC<EdgeRenderer> = ({ isShowCircle, onCircleCallback }) => {
   const linesRef = useRef(null);
   const { nodes, edges } = useStoreState((state) => state);
   const setEdges = useStoreActions((actions) => actions.setEdges);
@@ -90,9 +95,6 @@ const EdgeRenderer = () => {
                 id: lineId,
                 sourceId: node.id,
                 targetId: cover.targetId,
-                // path: pathData,
-                type: 'edge',
-                // @ts-ignore
                 startDirection: direction,
                 endDirection: cover.direction,
                 startPosition: {
@@ -103,13 +105,7 @@ const EdgeRenderer = () => {
                   x: cover.x,
                   y: cover.y,
                 },
-                edgeCircle: {
-                  position: {
-                    x: 0,
-                    y: 0,
-                  },
-                  title: '+',
-                },
+                text: '+',
               });
             }
           });
@@ -185,7 +181,12 @@ const EdgeRenderer = () => {
   return (
     <g className="lineBox" ref={linesRef}>
       {edges.map((item) => (
-        <Edge key={item.id} edge={item} />
+        <Edge
+          key={item.id}
+          edge={item}
+          isShowCircle={isShowCircle}
+          onCircleCallback={onCircleCallback}
+        />
       ))}
     </g>
   );
