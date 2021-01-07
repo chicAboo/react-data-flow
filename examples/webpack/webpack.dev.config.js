@@ -38,8 +38,7 @@ const sassGlobalRegex = /\.global\.(scss|sass)$/;
 const srcPath = path.resolve('./', 'src');
 
 const pathAlias = {
-  // '@': srcPath,
-  '@': path.resolve('./', 'src/a/'),
+  '@': srcPath,
   'react-dom': '@hot-loader/react-dom',
 };
 
@@ -77,7 +76,7 @@ module.exports = {
   },
   mode: 'development',
   entry: {
-    main: ['./src/index.tsx'],
+    main: ['react-hot-loader/patch', './src/index.tsx'],
   },
   output: {
     pathinfo: true,
@@ -235,15 +234,15 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: webpackConfig.appTitle,
-      template: './src/public/index.html',
+      template: './src/statics/index.html',
       filename: './index.html',
-      favicon: './src/public/favicon.ico',
+      favicon: './src/statics/favicon.ico',
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime/]),
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: 'public',
+          from: 'statics',
           to: '.',
           context: './src',
           globOptions: {

@@ -9,7 +9,7 @@ $iconHover: #2994FF;
   right: 40px;
   bottom: 60px;
   z-index: 10;
-  width: 215px;
+  width: 250px;
   height: 42px;
   padding-left: 20px;
   background: $bgColor;
@@ -17,6 +17,7 @@ $iconHover: #2994FF;
   box-shadow: 3px 3px 5px rgba(204, 204, 204, .6);
 
   > span {
+    display: inline-flex;
     cursor: pointer;
     color: $iconColor;
     margin-right: 20px;
@@ -43,7 +44,7 @@ $iconHover: #2994FF;
   }
 
   &-input {
-    width: 66px;
+    width: 70px;
     height: 24px;
     border: 1px solid #E4E4E4;
     box-sizing: border-box;

@@ -16,9 +16,10 @@ interface ReactDataFlowProps extends Omit<HTMLAttributes<HTMLDivElement>, ''> {
   edges?: EdgeTypes[];
   minZoom?: number;
   maxZoom?: number;
-  onFinish?: (data: DataFlowTypes) => void;
   flow?: any;
   isShowCircle?: boolean;
+  isCircleMove?: boolean;
+  onFinish?: (data: DataFlowTypes) => void;
   onCircleCallback?: (data: EdgeTypes) => void;
 }
 
@@ -28,10 +29,11 @@ const ReactDataFlow = ({
   minZoom,
   maxZoom,
   children,
-  onFinish,
   flow,
   isShowCircle = false,
+  isCircleMove = false,
   onCircleCallback,
+  onFinish,
   ...rest
 }: ReactDataFlowProps) => {
   return (
@@ -41,6 +43,7 @@ const ReactDataFlow = ({
           onFinish={onFinish}
           flow={flow}
           isShowCircle={isShowCircle}
+          isCircleMove={isCircleMove}
           onCircleCallback={onCircleCallback}
         />
         {children}

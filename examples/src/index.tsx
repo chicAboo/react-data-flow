@@ -4,7 +4,6 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import Demo from './demo1';
-console.log(1);
+import Router from './router';
 
-render(<Demo />, document.getElementById('root'));
+render(<Router />, document.getElementById('root'));

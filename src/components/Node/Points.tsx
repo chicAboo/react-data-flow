@@ -9,14 +9,16 @@ import { _position } from '@/utils';
 
 interface NodeProps {
   node: NodeTypes;
+  selectionNode: string;
 }
-const Points: FC<NodeProps> = ({ node }) => {
+const Points: FC<NodeProps> = ({ node, selectionNode }) => {
   const { point, rect, rectText } = config;
   const { position } = node;
+  const isShow = node.id === selectionNode ? 'block' : 'none';
 
   return (
     <Fragment>
-      <g className="points" style={{ display: 'none' }}>
+      <g className="points" style={{ display: isShow }}>
         {controls.map((direction: string) => {
           const pos = _position(position.x, position.y, direction);
           return (

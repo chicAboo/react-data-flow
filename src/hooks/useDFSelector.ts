@@ -3,7 +3,7 @@
  * @date 2020/12/30 8:39 下午
  */
 import { useRef } from 'react';
-import { DataFlowTypes } from '@/typings';
+import { DataFlowTypes, EdgeTypes } from '@/typings';
 
 export interface Callbacks<Values = any> {
   onFinish?: (values: Values) => void;
@@ -68,21 +68,21 @@ class DFStore {
   /**
    *  set field data
    * */
-  private setFields = (values: any) => {
+  private setFields = (values: DataFlowTypes) => {
     this.fields = values;
   };
 
   /**
    *  get field data
    * */
-  private getDfValues = () => {
+  private getDfValues = (): DataFlowTypes | null => {
     return this.fields;
   };
 
   /**
-   *  设置边信息回显
+   *  echo edge to setting
    * */
-  private setEdgeValues = (data: any) => {
+  private setEdgeValues = (data: EdgeTypes) => {
     const setEdgeCallback = this.callbacks.setEdgeCallback;
     if (setEdgeCallback) {
       try {
@@ -97,7 +97,7 @@ class DFStore {
 /**
  *  bind the data flow instance to useRef
  * */
-const useDFSelector = (dFlow?: any) => {
+const useDFSelector = (dFlow?: DFInstance) => {
   const dfRef = useRef<DFInstance>();
 
   if (!dfRef.current) {

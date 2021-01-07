@@ -15,13 +15,14 @@ import { lineHover } from './util';
 
 interface EdgeRenderer {
   isShowCircle?: boolean;
+  isCircleMove?: boolean;
   onCircleCallback?: (data: EdgeTypes) => void;
 }
 
 let tempId: any = null;
-const EdgeRenderer: FC<EdgeRenderer> = ({ isShowCircle, onCircleCallback }) => {
+const EdgeRenderer: FC<EdgeRenderer> = ({ isShowCircle, isCircleMove, onCircleCallback }) => {
   const linesRef = useRef(null);
-  const { nodes, edges } = useStoreState((state) => state);
+  const { nodes, edges, selectionNode } = useStoreState((state) => state);
   const setEdges = useStoreActions((actions) => actions.setEdges);
 
   /**
@@ -185,6 +186,8 @@ const EdgeRenderer: FC<EdgeRenderer> = ({ isShowCircle, onCircleCallback }) => {
           key={item.id}
           edge={item}
           isShowCircle={isShowCircle}
+          isCircleMove={isCircleMove}
+          selectionNode={selectionNode}
           onCircleCallback={onCircleCallback}
         />
       ))}

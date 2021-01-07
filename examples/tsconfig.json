@@ -4,7 +4,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "outDir": "src/public/", // target for compiled files
+    "outDir": "static/", // target for compiled files
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
     "esModuleInterop": true,
     "allowJs": true, // include js files
@@ -35,6 +35,5 @@
     "sourceMap": true
   },
   "include": ["src/**/*", "typings/*"],
-  "exclude": ["node_modules", "src/**/*.spec.*",
-    "src/public", "webapck"]
+  "exclude": ["node_modules", "src/**/*.spec.*", "static", "webapck"]
 }

@@ -8,8 +8,8 @@ import { _position } from '@/utils';
 
 export function dragRender(this: SVGAElement, e: any) {
   const { width, height } = config.rect;
-
   const nodeId = select(this).attr('id');
+
   // 更新节点
   select(this)
     .select('.rectNode')

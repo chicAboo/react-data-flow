@@ -10,12 +10,14 @@ import Points from './Points';
 
 interface NodeProps {
   node: NodeTypes;
+  selectionNode: string;
 }
 
-const Node: FC<NodeProps> = ({ node }) => {
+const Node: FC<NodeProps> = ({ node, selectionNode }) => {
   const { position, title } = node;
-  const { width, height, strokeColor, fill, radius } = config.rect;
+  const { width, height, strokeColor, fill, radius, hover } = config.rect;
   const rectText = config.rectText;
+  const rectFill = node.id === selectionNode ? hover.fill : fill;
 
   return (
     <g className="node nodeDraggable" id={node.id}>
@@ -28,7 +30,7 @@ const Node: FC<NodeProps> = ({ node }) => {
         width={width}
         height={height}
         stroke={strokeColor}
-        fill={fill}
+        fill={rectFill}
       />
       <text
         className="rectTextNode"
@@ -39,7 +41,7 @@ const Node: FC<NodeProps> = ({ node }) => {
         style={{ textAnchor: 'middle', fontSize: rectText.fontSize, userSelect: 'none' }}>
         {title}
       </text>
-      <Points node={node} />
+      <Points node={node} selectionNode={selectionNode} />
     </g>
   );
 };

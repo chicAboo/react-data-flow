@@ -7,10 +7,13 @@ import { EdgeTypes } from '@/typings';
 import { offsetFn, linePath } from '@/utils';
 import { config } from '@/constants/config';
 import Circle from './Circle';
+import AnimationCircle from './AnimationCircle';
 
 interface EdgeProps {
   edge: EdgeTypes;
+  selectionNode: string;
   isShowCircle?: boolean;
+  isCircleMove?: boolean;
   onCircleCallback?: (data: EdgeTypes) => void;
 }
 
@@ -31,14 +34,19 @@ function setPath(edge: EdgeTypes) {
     edge?.endDirection,
   );
 
-  const { pathData, middleX, middleY } = linePath(offset, edge.sourceId, edge.targetId);
-
-  return { pathData, middleY, middleX };
+  return linePath(offset, edge.sourceId, edge.targetId);
 }
 
-const Edge: FC<EdgeProps> = ({ edge, isShowCircle, onCircleCallback }) => {
+const Edge: FC<EdgeProps> = ({
+  edge,
+  isShowCircle,
+  isCircleMove,
+  selectionNode,
+  onCircleCallback,
+}) => {
   const { strokeWidth, strokeColor } = config.line;
   const { pathData, middleX, middleY } = setPath(edge);
+  const isMove = isCircleMove && selectionNode === edge.sourceId;
 
   return (
     <g className="pathEdge" id={edge.id}>
@@ -56,6 +64,7 @@ const Edge: FC<EdgeProps> = ({ edge, isShowCircle, onCircleCallback }) => {
           onCircleCallback={onCircleCallback}
         />
       )}
+      {isMove && <AnimationCircle path={pathData} position={{ x: middleX, y: middleY }} />}
     </g>
   );
 };

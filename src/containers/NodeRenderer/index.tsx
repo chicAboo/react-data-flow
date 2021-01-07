@@ -118,6 +118,7 @@ const NodeRenderer = () => {
       e.stopPropagation();
 
       const nodeId = select(this).attr('id');
+
       setSelectionNode(nodeId);
     },
     [setSelectionNode],
@@ -205,15 +206,28 @@ const NodeRenderer = () => {
   );
 
   /**
+   *  node mouse out
+   * */
+  const onMouseOutHandler = useCallback(
+    function (this: SVGAElement) {
+      const nodeId = select(this).attr('id');
+      if (nodeId !== selectionNode) {
+        onMouseout.call(this);
+      }
+    },
+    [selectionNode],
+  );
+
+  /**
    *  bind node drag event
    * */
   useEffect(() => {
     selectAll('.nodeDraggable')
       .on('click', onNodeClick)
       .on('mouseover', onMouseOver)
-      .on('mouseout', onMouseout)
+      .on('mouseout', onMouseOutHandler)
       .call(drag().on('drag', onDrag).on('end', onDragEnd));
-  }, [nodes, onNodeClick, onDrag, onDragEnd]);
+  }, [nodes, onNodeClick, onDrag, onDragEnd, onMouseOutHandler]);
 
   /**
    *  bind delete node event
@@ -238,7 +252,10 @@ const NodeRenderer = () => {
 
   return (
     <g className="nodeBox">
-      {nodes.length > 0 && nodes.map((item: NodeTypes) => <Node key={item.id} node={item} />)}
+      {nodes.length > 0 &&
+        nodes.map((item: NodeTypes) => (
+          <Node key={item.id} node={item} selectionNode={selectionNode} />
+        ))}
     </g>
   );
 };

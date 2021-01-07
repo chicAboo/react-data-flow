@@ -50,6 +50,7 @@ const plugins = [
     threadPool: happyThreadPool,
   }),
   new MiniCssExtractPlugin({
+    // filename: 'react-data-flow.min.css',
     filename: 'css/[name].[chunkhash].css',
     chunkFilename: 'css/[name].[chunkhash].css',
   }),
@@ -57,7 +58,7 @@ const plugins = [
     title: webpackConfig.appTitle,
     template: './src/index.html',
     filename: './index.html',
-    favicon: './src/public/favicon.ico',
+    favicon: './src/statics/favicon.ico',
     minify: {
       removeComments: true,
       collapseWhitespace: true,
@@ -72,18 +73,18 @@ const plugins = [
     },
   }),
   new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime/]),
-  // new CopyWebpackPlugin({
-  //   patterns: [
-  //     {
-  //       from: 'statics',
-  //       to: '.',
-  //       context: './src',
-  //       globOptions: {
-  //         ignore: ['favicon.ico', 'index.html', 'js', 'css', 'js/**/**', 'css/**/**'], // 防止被覆盖
-  //       },
-  //     },
-  //   ],
-  // }),
+  new CopyWebpackPlugin({
+    patterns: [
+      {
+        from: 'statics',
+        to: '.',
+        context: './src',
+        globOptions: {
+          ignore: ['favicon.ico', 'index.html', 'js', 'css', 'js/**/**', 'css/**/**'], // 防止被覆盖
+        },
+      },
+    ],
+  }),
   new FriendlyErrorsWebpackPlugin(),
 ];
 
@@ -100,7 +101,7 @@ module.exports = {
   output: {
     path: path.resolve('./', webpackConfig.outDirName),
     publicPath: webpackConfig.publicPath,
-      filename: "assets/js/[name].[hash].js",
+    filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].js',
     devtoolModuleFilenameTemplate: (info) =>
       path.relative(srcPath, info.absoluteResourcePath).replace(/\\/g, '/'),
@@ -227,7 +228,7 @@ module.exports = {
     ],
   },
   devtool: webpackConfig.devtool,
-    optimization: {
+  optimization: {
     minimize: true,
     namedModules: true,
     splitChunks: {

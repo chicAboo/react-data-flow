@@ -1,6 +1,6 @@
 {
   "name": "rdf-renderer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/RdfRenderer.js",
   "module": "dist/RdfRenderer.esm.js",
   "types": "dist/index.d.ts",

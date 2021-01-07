@@ -2,7 +2,7 @@
  * @author ChicAboo
  * @date 2020/12/23 5:06 下午
  */
-import React, { useEffect, useRef, useMemo, memo, HTMLAttributes } from 'react';
+import React, { useEffect, useRef, useMemo, memo, HTMLAttributes, useCallback } from 'react';
 import { zoom, zoomIdentity } from 'd3-zoom';
 import { select } from 'd3-selection';
 import { useStoreActions, useStoreState } from '@/store/hooks';
@@ -18,17 +18,29 @@ interface ZoomPaneProps extends Omit<HTMLAttributes<HTMLDivElement>, ''> {
 const ZoomPane = ({ children }: ZoomPaneProps) => {
   const zoomPane = useRef<HTMLDivElement>(null);
 
-  const { initD3Zoom, setTransform } = useStoreActions((actions) => actions);
+  const { initD3Zoom, setTransform, setSelectionNode } = useStoreActions((actions) => actions);
   const { d3Zoom, transform, minZoom, maxZoom } = useStoreState((state) => state);
 
   // resize
   useResizeHandler(zoomPane);
 
+  // translate scale
   const transformStyle = useMemo(
     () => ({
       transform: `translate(${transform.x}px, ${transform.y}px) scale(${transform.zoom})`,
     }),
     [transform.x, transform.y, transform.zoom],
+  );
+
+  /**
+   *  cancel circle move
+   * */
+  const onCancelCircleMove = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setSelectionNode('');
+    },
+    [setSelectionNode],
   );
 
   /**
@@ -66,7 +78,7 @@ const ZoomPane = ({ children }: ZoomPaneProps) => {
   }, [d3Zoom, maxZoom, minZoom, setTransform, transform.x, transform.y, transform.zoom]);
 
   return (
-    <div className={`${prefixCls}-renderer`} ref={zoomPane}>
+    <div className={`${prefixCls}-renderer`} ref={zoomPane} onClick={onCancelCircleMove}>
       <svg width="100%" height="100%">
         <g className="warp" style={transformStyle}>
           {children}

@@ -112,12 +112,13 @@ export default Demo;
 
 名称 | 描述  |  类型  |  默认值  | 版本 |
 --- | --- | --- | --- | --- |
-nodes  |  节点信息(必填)  | Array<NodeTypes>  |  []  | 1.0.5
-edges  |  边的信息(可选)  | Array<edgeTypes>  |  []  | 1.0.5
-flow  |  传入rdf的实例，用于控制图上信息的设置和获取(可选)  | any |  -  | 1.0.5
-isShowCircle  |  是否显示线上的圆(可选)  | boolean |  false  | 1.0.5
-onCircleCallback  |  线上圆的回调(可选)  | (edge) => void |  -  | 1.0.5
-onFinish  |  完成后的回调，需要通过实例化，调用submit方法触发(可选)  | (data) => void |  -  | 1.0.5
+nodes  |  节点信息(必填)  | Array<NodeTypes>  |  []  | 1.0.7
+edges  |  边的信息(可选)  | Array<edgeTypes>  |  []  | 1.0.7
+flow  |  传入rdf的实例，用于控制图上信息的设置和获取(可选)  | any |  -  | 1.0.7
+isShowCircle  |  是否显示线上的圆(可选)  | boolean |  false  | 1.0.7
+isCircleMove  |  选中节点时，起点到终点小球运动(可选)  | boolean |  false  | 1.0.7
+onCircleCallback  |  线上圆的回调(可选)  | (edge) => void |  -  | 1.0.7
+onFinish  |  完成后的回调，需要通过实例化，调用submit方法触发(可选)  | (data) => void |  -  | 1.0.7
 
 
 ### 节点选项
@@ -145,9 +146,9 @@ onFinish  |  完成后的回调，需要通过实例化，调用submit方法触�
 ### dfInstance
 名称  |  描述  |  类型  |  默认值  | 版本
 | ---| --- | --- | --- | --- |
-getDfValues  |  获取节点和边的信息  | () => DataFlowTypes |  {}  | 1.0.5
-setEdgeValues  |  设置边上圆上的回显值  | (data: {edgeId: string, text: 99 }) => void |  {}  | 1.0.5
-submit  |  提交信息，触发onFinish事件，返回数据  | () => void |  []  | 1.0.5
+getDfValues  |  获取节点和边的信息  | () => DataFlowTypes |  {}  | 1.0.7
+setEdgeValues  |  设置边上圆上的回显值  | (data: {edgeId: string, text: 99 }) => void |  {}  | 1.0.7
+submit  |  提交信息，触发onFinish事件，返回数据  | () => void |  []  | 1.0.7
 
 
 ## 背景
@@ -171,13 +172,13 @@ const gridConfig = {
 
 名称  |  描述  |  类型  |  默认值  | 版本
 | ---| --- | --- | --- | --- |
-gridConfig  |  背景参数配置(可选)  | object |  {}  | 1.0.5
-gridConfig.strokeColor  |  背景线条颜色  | string |  '#E2E2F0'  | 1.0.5
-gridConfig.strokeWidth  |  背景线条宽度  | number |  1  | 1.0.5
-gridConfig.distance  |  背景线条间距  | number |  20  | 1.0.5
-gridConfig.isLineDash  |  是否虚线显示  | boolean |  true  | 1.0.5
-gridConfig.lineDash  |  虚线的间距  | Array<[number, number]> |  [3, 3]  | 1.0.5
-style |  支持原生标签的style样式  | - |  -  | 1.0.5
+gridConfig  |  背景参数配置(可选)  | object |  {}  | 1.0.7
+gridConfig.strokeColor  |  背景线条颜色  | string |  '#E2E2F0'  | 1.0.7
+gridConfig.strokeWidth  |  背景线条宽度  | number |  1  | 1.0.7
+gridConfig.distance  |  背景线条间距  | number |  20  | 1.0.7
+gridConfig.isLineDash  |  是否虚线显示  | boolean |  true  | 1.0.7
+gridConfig.lineDash  |  虚线的间距  | Array<[number, number]> |  [3, 3]  | 1.0.7
+style |  支持原生标签的style样式  | - |  -  | 1.0.7
 
 
 ## 控件

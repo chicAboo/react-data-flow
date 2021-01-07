@@ -16,12 +16,14 @@ interface FlowRendererProps {
   onFinish?: (data: DataFlowTypes) => void;
   flow?: any;
   isShowCircle?: boolean;
+  isCircleMove?: boolean;
   onCircleCallback?: (data: EdgeTypes) => void;
 }
 
 const FlowRenderer: FC<FlowRendererProps> = ({
   isShowCircle,
   flow,
+  isCircleMove,
   onFinish,
   onCircleCallback,
 }) => {
@@ -65,7 +67,11 @@ const FlowRenderer: FC<FlowRendererProps> = ({
   return (
     <ZoomPane>
       <g className="tempLine">
-        <EdgeRenderer isShowCircle={isShowCircle} onCircleCallback={onCircleCallback} />
+        <EdgeRenderer
+          isShowCircle={isShowCircle}
+          isCircleMove={isCircleMove}
+          onCircleCallback={onCircleCallback}
+        />
         <NodeRenderer />
       </g>
       <MarkerDefinitions />
