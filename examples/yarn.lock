@@ -4801,7 +4801,7 @@ fsevents@~2.3.1:
 fstream@^1.0.0, fstream@^1.0.12:
   version "1.0.12"
   resolved "http://cnpm.seeyona9.com/fstream/-/fstream-1.0.12.tgz#4e8ba8ee2d48be4f7d0de505455548eae5932045"
-  integrity sha512-WvJ193OHa0GHPEL+AycEJgxvBEwyfRkN1vhjca23OaPVMCaLCXTd5qAu82AjTcgP1UJmytkOKb63Ypde7raDIg==
+  integrity sha1-Touo7i1Ivk99DeUFRVVI6uWTIEU=
   dependencies:
     graceful-fs "^4.1.2"
     inherits "~2.0.0"
@@ -5443,7 +5443,7 @@ imurmurhash@^0.1.4:
 in-publish@^2.0.0:
   version "2.0.1"
   resolved "http://cnpm.seeyona9.com/in-publish/-/in-publish-2.0.1.tgz#948b1a535c8030561cea522f73f78f4be357e00c"
-  integrity sha512-oDM0kUSNFC31ShNxHKUyfZKy8ZeXZBWMjMdZHKLOk13uvT27VTL/QzRGfRUcevJhpkZAvlhPYuXkF7eNWrtyxQ==
+  integrity sha1-lIsaU1yAMFYc6lIvc/ePS+NX4Aw=
 
 indent-string@^2.1.0:
   version "2.1.0"
@@ -6290,7 +6290,7 @@ lower-case@^2.0.2:
 lru-cache@^4.0.1:
   version "4.1.5"
   resolved "http://cnpm.seeyona9.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
-  integrity sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==
+  integrity sha1-i75Q6oW+1ZvJ4z3KuCNe6bz0Q80=
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
@@ -6782,7 +6782,7 @@ node-forge@^0.10.0:
 node-gyp@^3.8.0:
   version "3.8.0"
   resolved "http://cnpm.seeyona9.com/node-gyp/-/node-gyp-3.8.0.tgz#540304261c330e80d0d5edce253a68cb3964218c"
-  integrity sha512-3g8lYefrRRzvGeSowdJKAKyks8oUpLEd/DyPV4eMhVlhJ0aNaZqIrNUIPuEWWTAoPqyFkfGrM67MC69baqn6vA==
+  integrity sha1-VAMEJhwzDoDQ1e3OJTpoyzlkIYw=
   dependencies:
     fstream "^1.0.0"
     glob "^7.0.3"
@@ -6831,10 +6831,10 @@ node-releases@^1.1.29, node-releases@^1.1.52, node-releases@^1.1.69:
   resolved "http://cnpm.seeyona9.com/node-releases/-/node-releases-1.1.69.tgz#3149dbde53b781610cd8b486d62d86e26c3725f6"
   integrity sha1-MUnb3lO3gWEM2LSG1i2G4mw3JfY=
 
-node-sass@4.14.1:
+node-sass@^4.0.0:
   version "4.14.1"
   resolved "http://cnpm.seeyona9.com/node-sass/-/node-sass-4.14.1.tgz#99c87ec2efb7047ed638fb4c9db7f3a42e2217b5"
-  integrity sha512-sjCuOlvGyCJS40R8BscF5vhVlQjNN069NtQ1gSxyK1u9iqvn6tf7O1R4GNowVZfiZUCRt5MmMs1xd+4V/7Yr0g==
+  integrity sha1-mch+wu+3BH7WOPtMnbfzpC4iF7U=
   dependencies:
     async-foreach "^0.1.3"
     chalk "^1.1.1"
@@ -7181,7 +7181,7 @@ os-tmpdir@^1.0.0, os-tmpdir@~1.0.2:
 osenv@0:
   version "0.1.5"
   resolved "http://cnpm.seeyona9.com/osenv/-/osenv-0.1.5.tgz#85cdfafaeb28e8677f416e287592b5f3f49ea410"
-  integrity sha512-0CWcCECdMVc2Rw3U5w9ZjqX6ga6ubk1xDVKxtBQPK7wis/0F2r9T6k4ydGYhecl7YUBxBVxhL5oisPsNxAPe2g==
+  integrity sha1-hc36+uso6Gd/QW4odZK18/SepBA=
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
@@ -8808,10 +8808,10 @@ rc-virtual-list@^3.0.1, rc-virtual-list@^3.2.0:
     rc-resize-observer "^1.0.0"
     rc-util "^5.0.7"
 
-rdf-renderer@1.0.6:
-  version "1.0.6"
-  resolved "http://cnpm.seeyona9.com/rdf-renderer/-/rdf-renderer-1.0.6.tgz#4d405a6517a280f4feafc933e639c9bb366bb30f"
-  integrity sha1-TUBaZReigPT+r8kz5jnJuzZrsw8=
+rdf-renderer@1.0.8:
+  version "1.0.8"
+  resolved "http://cnpm.seeyona9.com/rdf-renderer/-/rdf-renderer-1.0.8.tgz#01c6ee2b9691404d2fecb232f13d883b216dec59"
+  integrity sha1-AcbuK5aRQE0v7LIy8T2IOyFt7Fk=
   dependencies:
     "@babel/runtime" "^7.12.5"
     classcat "^4.1.0"
@@ -10229,7 +10229,7 @@ tapable@^1.0.0, tapable@^1.1.3:
 tar@^2.0.0:
   version "2.2.2"
   resolved "http://cnpm.seeyona9.com/tar/-/tar-2.2.2.tgz#0ca8848562c7299b8b446ff6a4d60cdbb23edc40"
-  integrity sha512-FCEhQ/4rE1zYv9rYXJw/msRqsnmlje5jHP6huWeBZ704jUTy02c5AZyWujpMR1ax6mVw9NyJMfuK2CMDWVIfgA==
+  integrity sha1-DKiEhWLHKZuLRG/2pNYM27I+3EA=
   dependencies:
     block-stream "*"
     fstream "^1.0.12"
