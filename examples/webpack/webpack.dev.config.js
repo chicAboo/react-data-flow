@@ -35,10 +35,11 @@ if (!webpackConfig.supportIE) {
 const sassRegex = /\.(scss|sass)$/;
 const sassGlobalRegex = /\.global\.(scss|sass)$/;
 
-const srcPath = path.resolve('./', 'src');
+const srcPath = path.resolve('./', 'src/');
 
 const pathAlias = {
-  '@': srcPath,
+  // '@': srcPath,
+  '@': path.resolve('./', 'src/rdf/'),
   'react-dom': '@hot-loader/react-dom',
 };
 

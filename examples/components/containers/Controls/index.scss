@@ -1,0 +1,80 @@
+$bgColor: #fafafa;
+$iconColor: #434343;
+$iconHover: #2994FF;
+
+.rdf-tooltip {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 40px;
+  bottom: 60px;
+  z-index: 10;
+  width: 250px;
+  height: 42px;
+  padding-left: 20px;
+  background: $bgColor;
+  border-radius: 2px;
+  box-shadow: 3px 3px 5px rgba(204, 204, 204, .6);
+
+  > span {
+    display: inline-flex;
+    cursor: pointer;
+    color: $iconColor;
+    margin-right: 20px;
+
+    &:hover {
+      color: $iconHover;
+    }
+
+    &.rdf-tooltip-split {
+      width: 1px;
+      height: 20px;
+      background: #D9D9D9;
+    }
+
+    &.percent {
+      position: relative;
+      left: -20px;
+      padding-right: 3px;
+      color: $iconColor;
+      margin: 0;
+      background: #fff;
+    }
+
+  }
+
+  &-input {
+    width: 70px;
+    height: 24px;
+    border: 1px solid #E4E4E4;
+    box-sizing: border-box;
+    margin: 0;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: "tnum";
+    position: relative;
+    display: inline-block;
+    min-width: 0;
+    padding: 4px 11px;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    line-height: 1.5715;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 2px;
+    transition: all .3s;
+
+    &:focus {
+      border-color: #40a9ff;
+      border-right-width: 1px!important;
+      outline: 0;
+      box-shadow: 0 0 0 2px rgba(24,144,255,.2);
+    }
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

@@ -5,7 +5,8 @@
 import React, { useState } from 'react';
 import { Tree, Row, Col, message } from 'antd';
 import { FileOutlined, FolderOpenOutlined } from '@ant-design/icons';
-import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from 'rdf-renderer';
+// import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from 'rdf-renderer';
+import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from '../../rdf';
 import './index.scss';
 
 // 左侧树
@@ -118,7 +119,7 @@ const DragNode = () => {
           nodes={dfNodes}
           isShowCircle={true}
           isCircleMove={true}
-          onCircleCallback={(data) => console.log('点击线上的圆的回调', data)}
+          onCircleCallback={(data: any) => console.log('点击线上的圆的回调', data)}
           onFinish={(data: any) => console.log('提交时触发的回调', data)}>
           <Backgrounds />
           <Controls />
