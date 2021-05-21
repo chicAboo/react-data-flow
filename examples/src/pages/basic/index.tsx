@@ -4,7 +4,8 @@
  */
 import React, { useState } from 'react';
 import { Button, Modal, Form, Input, InputNumber, message } from 'antd';
-import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from 'rdf-renderer';
+// import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from 'rdf-renderer';
+import ReactDataFlow, { Backgrounds, Controls, useDFSelector } from '../../rdf';
 
 const height = 600;
 const nodes = [
@@ -95,7 +96,7 @@ const Demo = () => {
           edges={edges}
           isShowCircle={true}
           isCircleMove={true}
-          onCircleCallback={(data) => {
+          onCircleCallback={(data: any) => {
             message.success('点击成功, 返回的数据信息看控制台');
             console.log('点击线上的圆的回调', data);
           }}

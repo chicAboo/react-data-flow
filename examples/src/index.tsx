@@ -6,4 +6,13 @@ import React from 'react';
 import { render } from 'react-dom';
 import Router from './router';
 
-render(<Router />, document.getElementById('root'));
+const renderHtml = () => {
+  render(<Router />, document.getElementById('root'));
+};
+
+renderHtml();
+if ((module as any).hot) {
+  (module as any).hot.accept(() => {
+    renderHtml();
+  });
+}
